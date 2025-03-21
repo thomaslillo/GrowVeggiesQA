@@ -1,3 +1,8 @@
-data/venv/*
 *.db
 *.pdf
+*.pyc
+__pycache__/
+venv/
+.env
+.idea/
+.vscode/

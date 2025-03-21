@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <!-- Left sidebar with filters -->
+    <div class="col-md-3">
+        <div class="filter-sidebar">
+            <h4>Filters</h4>
+            <div class="mb-3">
+                <label for="section-filter" class="form-label">Section</label>
+                <select class="form-select" id="section-filter" name="section"
+                        hx-get="{{ url_for('search') }}"
+                        hx-trigger="change"
+                        hx-target="#search-results"
+                        hx-include="#search-input">
+                    <option value="">All Sections</option>
+                    {% for section in sections %}
+                    <option value="{{ section.section_name }}">{{ section.section_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main content area -->
+    <div class="col-md-9">
+        <!-- Search bar -->
+        <div class="search-container">
+            <div class="input-group">
+                <input type="text" class="form-control" id="search-input" name="query" placeholder="Search for content..."
+                       hx-get="{{ url_for('search') }}"
+                       hx-trigger="keyup changed delay:500ms, search"
+                       hx-target="#search-results"
+                       hx-include="#section-filter">
+                <button class="btn btn-primary" type="button"
+                        hx-get="{{ url_for('search') }}"
+                        hx-trigger="click"
+                        hx-target="#search-results"
+                        hx-include="#search-input, #section-filter">
+                    Search
+                </button>
+            </div>
+        </div>
+        
+        <!-- Search results -->
+        <div id="search-results" class="results-table">
+            {% include '_search_results.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}
