@@ -1,5 +1,7 @@
 # GrowVeggies Dashboard
 
+The GrowVeggies Dashboard is for students of HomesteadTO to use as a resource for farming and gardening at home. It makes the course textbook available in a searchable format.
+
 This is a simple dashboard web application built with Flask and HTMX for managing and searching content from a PDF database. The app includes user authentication via PocketBase, allowing users to register, log in, and search for content in a SQLite database.
 
 ## Features
@@ -51,6 +53,3 @@ This is a simple dashboard web application built with Flask and HTMX for managin
 - Users can register through the registration page.
 - After registration, users can log in with their credentials.
 - The dashboard allows users to search for content from the PDF database, filtered by section.
-
-## License
-This project is licensed under the MIT License.
